@@ -3,7 +3,6 @@
     "type": "library",
     "description": "A json-guard decorator to enable schema caching",
     "keywords": [
-        "json-guard-cached-loader",
         "json-guard",
         "JSON Schema"
     ],
