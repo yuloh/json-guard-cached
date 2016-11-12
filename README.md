@@ -2,7 +2,7 @@
 
 A json-guard decorator to enable schema caching.  Works with any PSR-6 cache implementation.
 
-This adapter is experimental until it proves to be worth using.
+This decorator is experimental until it proves to be worth using.
 
 ## Install
 
