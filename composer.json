@@ -1,0 +1,42 @@
+{
+    "name": "yuloh/json-guard-cached",
+    "type": "library",
+    "description": "A json-guard decorator to enable schema caching",
+    "keywords": [
+        "json-guard-cached-loader",
+        "json-guard",
+        "JSON Schema"
+    ],
+    "homepage": "https://github.com/yuloh/json-guard-cached",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Allan",
+            "email": "matthew.james.allan@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "league/json-guard": "*",
+        "psr/cache": "1.0.1."
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "squizlabs/php_codesniffer": "~2.3",
+        "cache/array-adapter": "^0.4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "League\\JsonGuard\\Cached\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\JsonGuard\\Cached\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs": "phpcs --standard=psr2 src/"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "a test schema",
+    "description": "a test schema",
+    "properties": {
+        "id": {
+            "type": "integer"
+        }
+    }
+}
