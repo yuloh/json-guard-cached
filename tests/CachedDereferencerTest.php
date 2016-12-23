@@ -6,7 +6,7 @@ use Cache\Adapter\PHPArray\ArrayCachePool;
 
 class CachedDereferencerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testCachedLoaderCachesTheSchema()
+    public function testCachedDereferencerCachesTheSchema()
     {
         $cache        = new ArrayCachePool();
         $dereferencer = new CachedDereferencer($cache);
@@ -18,7 +18,7 @@ class CachedDereferencerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($cache->getItem(sha1($path))->isHit());
     }
 
-    public function testCachedLoaderReturnsTheCachedSchema()
+    public function testCachedDereferencerReturnsTheCachedSchema()
     {
         $cache        = new ArrayCachePool();
         $dereferencer = new CachedDereferencer($cache);
@@ -32,6 +32,16 @@ class CachedDereferencerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($cachedSchema, $schema);
         $this->assertSame($cachedSchema, $nextSchema);
+    }
+
+    public function testCachedDereferencerDecoratesLoaders()
+    {
+        $cache        = new ArrayCachePool();
+        $dereferencer = new CachedDereferencer($cache);
+
+        foreach ($dereferencer->getDereferencer()->getLoaders() as $loader) {
+            $this->assertInstanceOf(CachedLoader::class, $loader);
+        }
     }
 }
 

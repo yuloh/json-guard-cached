@@ -5,6 +5,10 @@ namespace League\JsonGuard\Cached;
 use League\JsonGuard\Dereferencer;
 use Psr\Cache\CacheItemPoolInterface;
 
+/**
+ * A caching decorator for the dereferencer.
+ * Caches the initial schema (unless it's an object) and caches all external references.
+ */
 class CachedDereferencer
 {
     /**
@@ -25,6 +29,7 @@ class CachedDereferencer
     {
         $this->cache        = $cache;
         $this->dereferencer = $dereferencer ?: new Dereferencer();
+        $this->cacheLoaders();
     }
 
     /**
@@ -68,5 +73,16 @@ class CachedDereferencer
     public function getCache()
     {
         return $this->cache;
+    }
+
+    /**
+     * Decorate all of the loaders with cached loaders.
+     */
+    private function cacheLoaders()
+    {
+        foreach ($this->dereferencer->getLoaders() as $prefix => $loader) {
+            $cached = new CachedLoader($this->cache, $loader);
+            $this->dereferencer->registerLoader($cached, $prefix);
+        }
     }
 }
