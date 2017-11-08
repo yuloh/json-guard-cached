@@ -1,5 +1,7 @@
 # JSON Guard Cached
 
+** DEPRECATED ** - caching is now part of [json-reference](http://json-reference.thephpleague.com/).
+
 A json-guard decorator to enable schema caching.  Works with any PSR-6 cache implementation.
 
 This decorator is experimental until it proves to be worth using.
