@@ -9,7 +9,7 @@ use Psr\Cache\CacheItemPoolInterface;
  * A caching decorator for the dereferencer.
  * Caches the initial schema (unless it's an object) and caches all external references.
  */
-class CachedDereferencer
+class CachedDereferencer extends Dereferencer
 {
     /**
      * @var \Psr\Cache\CacheItemPoolInterface
